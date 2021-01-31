@@ -1,0 +1,16 @@
+form{
+    width: 100%;
+}
+
+mat-form-field{
+    width: 15%;
+    margin-right: 10px;
+}
+
+.titulo{
+    width: 25%;
+}
+
+.botoneras{
+    margin-top: 20px;
+}
