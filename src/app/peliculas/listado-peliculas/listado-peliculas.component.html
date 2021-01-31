@@ -1,0 +1,30 @@
+<app-listado-generico [listado]="peliculas" [tituloGenerico]="titulo">
+    <!-- <ng-container contenidoCargando>
+        <b>Cargando lista...</b>
+    </ng-container> -->
+    <!-- <ng-container contenidoVacio>
+        <div>Se muestra el ejemplo de la lista <b>vacía</b></div>
+    </ng-container> -->
+    <ng-container contenido>
+        <div class="peliculas-contenedor">
+            <div *ngFor="let pelicula of peliculas; let i = index" class="contenedorListaPeliculas">
+                <!-- <div>{{(i + 1) + ". " + pelicula.nombre | uppercase}} <button (click)="borrarPelicula(i)">Eliminar</button></div>
+                <div>{{pelicula.fecha | date:"dd-MM-yyyy"}}</div>
+                <div>{{pelicula.precio | currency:'EUR'}}</div> -->
+                <a>
+                    <img [src]="pelicula.poster" alt="poster">
+                </a>
+                <p>
+                    <a>{{pelicula.nombre}}</a>
+                </p>
+                <div>
+                    <a mat-flat-button color="primary">Editar</a>
+                    <button mat-flat-button color="warn" type="button">Borrar</button>
+                </div>
+            </div>
+        </div>
+        <!-- <ng-container *ngIf="peliculas && peliculas.length > 0">
+            
+        </ng-container> -->
+    </ng-container>
+</app-listado-generico>

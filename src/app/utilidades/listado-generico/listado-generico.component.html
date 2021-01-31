@@ -1,0 +1,26 @@
+<h1>{{tituloGenerico}}</h1>
+<div *ngIf="!listado">
+
+    <span #contenidoCargando>
+        <ng-content select="[contenidoCargando]"></ng-content>
+    </span>
+
+    <span *ngIf="!contenidoCargando.innerHTML.trim()"><!--*ngIf="!contenidoCargando.innerHTML.trim()" -->
+        <img src="https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/>
+    </span>
+    
+</div>
+
+<div *ngIf="listado && listado.length <= 0">
+    <span #contenidoVacio>
+        <ng-content select="[contenidoVacio]"></ng-content>
+    </span>
+    
+    <span *ngIf="!contenidoVacio.innerHTML.trim()">
+        <p>No hay ninguna película</p>
+    </span>
+    
+</div>
+<ng-container *ngIf="listado && listado.length > 0">
+    <ng-content select="[contenido]"></ng-content>
+</ng-container>
