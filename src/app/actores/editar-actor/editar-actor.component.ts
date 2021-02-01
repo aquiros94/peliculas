@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { actorCreacionDTO } from '../actor';
 
 @Component({
   selector: 'app-editar-actor',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarActorComponent implements OnInit {
 
-  constructor() { }
+  public actorParametro : actorCreacionDTO;
+
+  constructor() {
+    this.actorParametro = {nombre : "Daniel Radcliffe", fechaNacimiento : new Date("1989-07-23")}
+  }
 
   ngOnInit(): void {
   }
 
+  public guardarCambios(actor : actorCreacionDTO){
+    console.log(actor);
+  }
 }
