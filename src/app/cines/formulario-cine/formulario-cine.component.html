@@ -1,0 +1,11 @@
+<form [formGroup]="formulario" (submit)="realizarCambios()">
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre*</mat-label>
+        <input formControlName="nombre" matInput/>
+        <mat-error>El campo nombre es requerido</mat-error>
+    </mat-form-field>
+    <div>
+        <button mat-flat-button color="primary" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>
+        <button mat-stroked-button routerLink="/cines">Cancelar</button>
+    </div>
+</form>

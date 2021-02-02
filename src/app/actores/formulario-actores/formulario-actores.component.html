@@ -13,6 +13,14 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
+    <ng-container *ngIf="actorEditar">
+        <app-input-img class="botonera" (archivoSeleccionado)="archivoSeleccionado($event)" [urlImagenActual]="actorEditar.urlFoto"></app-input-img>
+    </ng-container>
+    <ng-container *ngIf="!actorEditar">
+        <app-input-img class="botonera" (archivoSeleccionado)="archivoSeleccionado($event)"></app-input-img>
+    </ng-container>
+    
+    <app-input-markdown (markdownComunicador)="tratarDescripcion($event)"></app-input-markdown>
     <div>
         <button mat-flat-button color="primary" type="submit" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>
         <button mat-stroked-button routerLink="/actores">Cancelar</button>

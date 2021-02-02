@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { cineCreacionDTO, cineDTO } from '../cine';
 
 @Component({
   selector: 'app-editar-cine',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarCineComponent implements OnInit {
 
-  constructor() { }
+  public cine : cineDTO;
+  constructor() { 
+    this.cine = {nombre : "Lagoh"};
+    debugger;
+  }
 
   ngOnInit(): void {
   }
 
+  public guardarCambios(cine : cineCreacionDTO){
+    console.log(cine);
+  }
 }

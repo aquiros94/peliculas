@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { actorCreacionDTO } from '../actor';
+import { actorCreacionDTO, actorDTO } from '../actor';
 
 @Component({
   selector: 'app-formulario-actores',
@@ -11,17 +11,20 @@ export class FormularioActoresComponent implements OnInit {
 
   public formulario : FormGroup;
   @Output() public guardar;
-  @Input() public actorEditar : actorCreacionDTO | undefined;
+  @Input() public actorEditar : actorDTO | undefined;
 
   constructor(private formBuilder : FormBuilder) {
     
     this.guardar = new EventEmitter<actorCreacionDTO>();
+    this.actorEditar = undefined;
     this.formulario = this.formBuilder.group({
       nombre : [
         '', {
           validators : [Validators.required]
         }],
-      fechaNacimiento : ''
+      fechaNacimiento : '',
+      foto : '',
+      descripcion : ''
     });
   }
 
@@ -35,4 +38,11 @@ export class FormularioActoresComponent implements OnInit {
     this.guardar.emit(this.formulario.value);
   }
 
+  public archivoSeleccionado(fichero : File){
+    this.formulario.get('foto')?.setValue(fichero);
+  }
+
+  public tratarDescripcion(texto : string){
+    this.formulario.get('descripcion')?.setValue(texto);
+  }
 }
