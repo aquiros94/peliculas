@@ -18,8 +18,12 @@ export class InputMarkdownComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public inputTextArea(texto : string){
-    this.contenidoMardown = texto;
-    this.markdownComunicador.emit(this.contenidoMardown);
+  public inputTextArea(evento : any){
+    this.contenidoMardown = "";
+    if (evento.value  != null){
+      this.contenidoMardown = evento.value;
+      this.markdownComunicador.emit(this.contenidoMardown);
+    }
+    
   }
 }
