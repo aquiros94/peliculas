@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Coordenada } from 'src/app/utilidades/mapa/coordenada';
 import { cineCreacionDTO, cineDTO } from '../cine';
 
 @Component({
@@ -9,15 +10,16 @@ import { cineCreacionDTO, cineDTO } from '../cine';
 export class EditarCineComponent implements OnInit {
 
   public cine : cineDTO;
+
   constructor() { 
-    this.cine = {nombre : "Lagoh"};
-    debugger;
+    this.cine = {nombre : "Lagoh", coordenada : {latitud : 37.34288223059827, longitud : -365.83189487457275}};
   }
 
   ngOnInit(): void {
   }
 
   public guardarCambios(cine : cineCreacionDTO){
+    debugger;
     console.log(cine);
   }
 }
