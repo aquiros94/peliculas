@@ -11,16 +11,15 @@ import { cineCreacionDTO, cineDTO } from '../cine';
 export class FormularioCineComponent implements OnInit {
 
   public formulario : FormGroup;
+  public coordenada! : Coordenada;
   @Output() public comunicadorGuardarCambios;
   @Input() public cineEditar! : cineDTO;
 
   constructor(private formBuilder : FormBuilder) { 
     this.formulario = this.formBuilder.group({
       nombre : ['', {validators : [Validators.required]}],
-      coordenadas : {
-        latitud : [2, {validators : [Validators.required]}],
-        longitud : [2, {validators : [Validators.required]}]
-      }
+      latitud : ['', {validators : [Validators.required]}],
+      longitud : ['', {validators : [Validators.required]}]
     });
     this.comunicadorGuardarCambios = new EventEmitter<cineCreacionDTO>();    
   }
@@ -28,6 +27,8 @@ export class FormularioCineComponent implements OnInit {
   ngOnInit(): void {
     if (this.cineEditar !== undefined){
       this.formulario.patchValue(this.cineEditar);
+      this.cineEditar.latitud = this.coordenada.latitud;
+      this.cineEditar.longitud = this.coordenada.longitud;
     }
   }
 
@@ -36,8 +37,6 @@ export class FormularioCineComponent implements OnInit {
   }
 
   public obtenerCoordenadas(coordena : Coordenada){
-    debugger;
-    this.cineEditar.coordenada = coordena;
-    this.formulario.patchValue(this.cineEditar);
+    this.formulario.patchValue(coordena);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeliculaDTO } from '../pelicula';
 
 @Component({
   selector: 'app-editar-pelicula',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarPeliculaComponent implements OnInit {
 
-  constructor() { }
+  public pelicula : PeliculaDTO;
+
+  constructor() {
+    this.pelicula = {
+      titulo : 'Harry Potter',
+      enCines : true,
+      poster : 'https://playmax.xyz/img/c/400/1/1485452104/492.jpg',
+      resumen : 'La película es de Harry Potter',
+      trailer : 'https://www.youtube.com/watch?v=M1me0fEgYxY',
+      fechaLanzamiento : new Date()
+    };
+  }
 
   ngOnInit(): void {
   }

@@ -1,11 +1,11 @@
-import { Coordenada } from "../utilidades/mapa/coordenada";
-
 export interface cineCreacionDTO {
     nombre : string;
-    coordenada : Coordenada
+    latitud : number;
+    longitud : number;
 }
 
 export interface cineDTO {
     nombre : string;
-    coordenada : Coordenada
+    latitud : number;
+    longitud : number;
 }

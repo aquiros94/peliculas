@@ -11,7 +11,7 @@ import { Coordenada } from './coordenada';
 export class MapaComponent implements OnInit {
 
   @Output() public coordenadas : EventEmitter<Coordenada>;
-  @Input() public cineObtenido!: cineDTO;
+  @Input() public coordenadaObtenida!: Coordenada;
 
   public options : any;
   public marca!: Marker;
@@ -28,10 +28,10 @@ export class MapaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.cineObtenido != undefined){
+    if (this.coordenadaObtenida != undefined){
       debugger;
-      this.options.center = latLng(this.cineObtenido.coordenada.latitud, this.cineObtenido.coordenada.longitud);
-      this.marca = marker([this.cineObtenido.coordenada.latitud, this.cineObtenido.coordenada.longitud]);
+      this.options.center = latLng(this.coordenadaObtenida.latitud, this.coordenadaObtenida.longitud);
+      this.marca = marker([this.coordenadaObtenida.latitud, this.coordenadaObtenida.longitud]);
     }
   }
 

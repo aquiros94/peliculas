@@ -1,0 +1,35 @@
+<form [formGroup]="formulario" (submit)="guardarCambios()">
+    
+    <mat-form-field appearance="outline" class="inputNombre">
+        <mat-label>Título*</mat-label>
+        <input formControlName="titulo" matInput/>
+        <mat-error>El campo título es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="enCines" color="primary">En cines</mat-checkbox>
+    
+    <div class="componentes">
+        <mat-form-field appearance="outline" class="inputTrailer">
+            <mat-label>Trailer</mat-label>
+            <input formControlName="trailer" matInput/>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha de lanzamiento</mat-label>
+            <input formControlName="fechaLanzamiento" [matDatepicker]="picker" matInput />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <h4>Seleccionar poster</h4>
+    <app-input-img class="botonera" [urlImagenActual]="peliculaEditar.poster" (archivoSeleccionado)="agregarFichero($event)"></app-input-img>
+    
+    <h4>Resumen de la película</h4>
+    <app-input-markdown [tituloEditar]="'Sinopsis'" [contenidoMardown]="peliculaEditar.resumen"></app-input-markdown>
+
+    <div>
+        <button mat-flat-button color="primary" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/">Cancelar</a>
+    </div>
+</form>

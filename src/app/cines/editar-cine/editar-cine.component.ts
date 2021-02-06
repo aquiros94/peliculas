@@ -12,7 +12,7 @@ export class EditarCineComponent implements OnInit {
   public cine : cineDTO;
 
   constructor() { 
-    this.cine = {nombre : "Lagoh", coordenada : {latitud : 37.34288223059827, longitud : -365.83189487457275}};
+    this.cine = {nombre : "Lagoh", latitud : 37.34288223059827, longitud : -365.83189487457275};
   }
 
   ngOnInit(): void {
