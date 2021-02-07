@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
 import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-generico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import "leaflet/dist/images/marker-shadow.png"
@@ -35,6 +35,7 @@ import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine
 import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component';
 import { MapaComponent } from './utilidades/mapa/mapa.component';
 import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/formulario-pelicula.component';
+import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/for
     FormularioCineComponent,
     InputMarkdownComponent,
     MapaComponent,
-    FormularioPeliculaComponent
+    FormularioPeliculaComponent,
+    SelectorMultipleComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +74,7 @@ import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/for
     MaterialModule,
     ReactiveFormsModule,
     LeafletModule,
+    FormsModule,
     MarkdownModule.forRoot()
   ],
   providers: [],

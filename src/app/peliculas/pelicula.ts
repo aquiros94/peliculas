@@ -14,4 +14,5 @@ export interface PeliculaDTO {
     trailer : string;
     fechaLanzamiento : Date;
     poster : string;
+    generos : number[];
 }

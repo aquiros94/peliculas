@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MultipleSelectorModel } from 'src/app/utilidades/selector-multiple/multiple-selector-model';
 import { PeliculaCreacionDTO, PeliculaDTO } from '../pelicula';
 
 @Component({
@@ -13,8 +14,13 @@ export class FormularioPeliculaComponent implements OnInit {
   @Input() public peliculaEditar! : PeliculaDTO;
 
   public formulario : FormGroup;
+  public listaGenerosSinSeleccionar : MultipleSelectorModel[];
+  public listaGenerosSeleccionados : MultipleSelectorModel[];
 
   constructor(private formBuilder : FormBuilder) {
+    this.listaGenerosSinSeleccionar = [{id : 1, valor : "Acción"}, {id : 2, valor : "Comedia"}, {id : 3, valor : "Romántico"}, {id : 4, valor : "Fantástico"}];
+    this.listaGenerosSeleccionados = [];
+
     this.comunicadorGuardar = new EventEmitter<PeliculaCreacionDTO>();
 
     this.formulario = this.formBuilder.group({
@@ -23,7 +29,8 @@ export class FormularioPeliculaComponent implements OnInit {
       enCines : false,
       trailer : '',
       fechaLanzamiento : '',
-      poster : ''
+      poster : '',
+      generos : []
     });
   }
 
@@ -34,10 +41,15 @@ export class FormularioPeliculaComponent implements OnInit {
   }
 
   public guardarCambios() : void {
+    this.formulario.get('generos')?.setValue(this.listaGenerosSeleccionados.map(x => x.id));
     this.comunicadorGuardar.emit(this.formulario.value);
   }
 
   public agregarFichero(fichero : File) : void {
     this.formulario.get('poster')?.setValue(fichero);
+  }
+
+  public modificarTexto(texto : string){
+    this.formulario.get('resumen')?.setValue(texto);
   }
 }

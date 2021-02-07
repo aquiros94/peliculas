@@ -18,8 +18,7 @@ export class InputImgComponent implements OnInit {
     this.urlImagenActual = '';
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   public change(evento : any){
     var fichero : File = evento.target.files[0];

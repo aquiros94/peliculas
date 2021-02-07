@@ -20,14 +20,8 @@ export class InputMarkdownComponent implements OnInit {
     debugger;
     console.log(this.contenidoMardown);
   }
-
-  public inputTextArea(evento : any){
-    debugger;
-    this.contenidoMardown = "";
-    if (evento.value  != null){
-      this.contenidoMardown = evento.value;
-      this.markdownComunicador.emit(this.contenidoMardown);
-    }
-    
+ 
+  public modificarTexto(evento : any) : void{
+    this.markdownComunicador.emit(evento.target.value);
   }
 }

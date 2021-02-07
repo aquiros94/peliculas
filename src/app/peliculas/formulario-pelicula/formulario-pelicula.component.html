@@ -22,11 +22,24 @@
         </mat-form-field>
     </div>
 
-    <h4>Seleccionar poster</h4>
-    <app-input-img class="botonera" [urlImagenActual]="peliculaEditar.poster" (archivoSeleccionado)="agregarFichero($event)"></app-input-img>
+    <ng-container *ngIf="peliculaEditar !== undefined">
+        <h4>Seleccionar poster</h4>
+        <app-input-img class="botonera" *ngIf="peliculaEditar !== undefined" [urlImagenActual]="peliculaEditar.poster" (archivoSeleccionado)="agregarFichero($event)"></app-input-img>
     
-    <h4>Resumen de la película</h4>
-    <app-input-markdown [tituloEditar]="'Sinopsis'" [contenidoMardown]="peliculaEditar.resumen"></app-input-markdown>
+        <h4>Resumen de la película</h4>
+        <app-input-markdown [tituloEditar]="'Sinopsis'" [contenidoMardown]="peliculaEditar.resumen" (markdownComunicador)="modificarTexto($event)"></app-input-markdown>
+    </ng-container>
+
+    <ng-container *ngIf="peliculaEditar === undefined">
+        <h4>Seleccionar poster</h4>
+        <app-input-img class="botonera" *ngIf="peliculaEditar === undefined" (archivoSeleccionado)="agregarFichero($event)"></app-input-img>
+    
+        <h4>Resumen de la película</h4>
+        <app-input-markdown [tituloEditar]="'Sinopsis'" (markdownComunicador)="modificarTexto($event)"></app-input-markdown>
+    </ng-container>
+
+    <h2>Seleccione los géneros</h2>
+    <app-selector-multiple [listaSinSeleccionar]="listaGenerosSinSeleccionar" [listaSeleccionados]="listaGenerosSeleccionados"></app-selector-multiple>
 
     <div>
         <button mat-flat-button color="primary" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>
