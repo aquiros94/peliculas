@@ -16,13 +16,13 @@ export function primeraLetraMayuscula() {
                         }
                     };
                 }else{
-                    return ;
+                    return "";
                 }
             }else{
-                return ;
+                return "";
             }
         }else{
-            return ;
+            return "";
         }
     }
 }

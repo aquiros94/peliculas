@@ -41,6 +41,12 @@
     <h2>Seleccione los géneros</h2>
     <app-selector-multiple [listaSinSeleccionar]="listaGenerosSinSeleccionar" [listaSeleccionados]="listaGenerosSeleccionados"></app-selector-multiple>
 
+    <h2>Seleccione los cines</h2>
+    <app-selector-multiple [listaSinSeleccionar]="listaCinesSinSeleccionar" [listaSeleccionados]="listaCinesSeleccionados"></app-selector-multiple>
+
+    <h2>Selecciones los actores</h2>
+    <app-autocomplete-actores></app-autocomplete-actores>
+    
     <div>
         <button mat-flat-button color="primary" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>
         <a mat-stroked-button routerLink="/">Cancelar</a>

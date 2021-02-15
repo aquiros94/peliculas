@@ -16,11 +16,15 @@ export class FormularioPeliculaComponent implements OnInit {
   public formulario : FormGroup;
   public listaGenerosSinSeleccionar : MultipleSelectorModel[];
   public listaGenerosSeleccionados : MultipleSelectorModel[];
+  public listaCinesSinSeleccionar : MultipleSelectorModel[];
+  public listaCinesSeleccionados : MultipleSelectorModel[];
 
   constructor(private formBuilder : FormBuilder) {
     this.listaGenerosSinSeleccionar = [{id : 1, valor : "Acción"}, {id : 2, valor : "Comedia"}, {id : 3, valor : "Romántico"}, {id : 4, valor : "Fantástico"}];
+    this.listaCinesSinSeleccionar = [{id : 1, valor : "Nervión"}, {id : 2, valor : "Lagoh"}, {id : 3, valor : "Los Arcos"}, {id : 4, valor : "Eroski"}];
     this.listaGenerosSeleccionados = [];
-
+    this.listaCinesSeleccionados = [];
+    
     this.comunicadorGuardar = new EventEmitter<PeliculaCreacionDTO>();
 
     this.formulario = this.formBuilder.group({
