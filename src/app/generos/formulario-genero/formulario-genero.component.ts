@@ -12,20 +12,20 @@ export class FormularioGeneroComponent implements OnInit {
 
   public form : FormGroup;
   @Output() public onSubmit;
+  @Input() public listaErrores : string[];
   @Input() public parametroGenero : generoCreacionDTO | undefined;
 
   constructor(private formBuilder : FormBuilder) { 
+    this.listaErrores = [];
     this.onSubmit = new EventEmitter<generoCreacionDTO>();
     this.form = this.formBuilder.group({
       nombre:['',{
         validators : [Validators.required, Validators.minLength(3), primeraLetraMayuscula()]
       }]
     });
-
   }
 
   ngOnInit(): void {
-    debugger;
     if (this.parametroGenero !== undefined){
       this.form.patchValue(this.parametroGenero);
     }

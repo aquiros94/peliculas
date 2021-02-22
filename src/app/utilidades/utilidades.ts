@@ -7,3 +7,27 @@ export function toBase64(fichero : File) {
         reader.onerror = (error) => reject(error);
     });
 }
+
+export function parsearErroresAPI(respuesta : any) : string[]{
+    var mapaErrores : any;
+    var entradas : any;
+    var resultado : string[] = []
+
+    debugger;
+    if (respuesta.error){
+        if (typeof respuesta.error === 'string'){
+            resultado.push(respuesta.error);
+        }else{
+            mapaErrores = respuesta.error.errors;
+            entradas = Object.entries(mapaErrores);
+            entradas.forEach(arreglo => {
+                const campo = arreglo[0];
+                arreglo[1].forEach(mensajeError => {
+                    resultado.push(`${campo}: ${mensajeError}`);
+                });
+            });
+        }
+    }
+
+    return resultado;
+}
