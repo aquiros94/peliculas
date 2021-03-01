@@ -1,3 +1,4 @@
 <h2>Crear Género</h2>
 
-<app-formulario-genero [parametroGenero]="modeloBBDD" (onSubmit)="guardarCambios($event)"></app-formulario-genero>
+<app-formulario-genero *ngIf="modeloBBDD" [parametroGenero]="modeloBBDD" (onSubmit)="guardarCambios($event)" [listaErrores]="errores"></app-formulario-genero>
+<mat-spinner *ngIf="!modeloBBDD"></mat-spinner>

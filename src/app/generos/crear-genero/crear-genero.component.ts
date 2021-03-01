@@ -22,7 +22,7 @@ export class CrearGeneroComponent implements OnInit {
 
   public guardarCambios(genero : generoCreacionDTO) : void{
 
-    this.servicioGenero.CrearGenero(genero).subscribe(() =>{
+    this.servicioGenero.Crear(genero).subscribe(() =>{
       this.router.navigate(["/generos"]);
     },
     error => {

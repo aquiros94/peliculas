@@ -12,6 +12,7 @@ export class FormularioActoresComponent implements OnInit {
   public formulario : FormGroup;
   @Output() public guardar;
   @Input() public actorEditar : actorDTO | undefined;
+  @Input() public errores : string[] | undefined;
 
   constructor(private formBuilder : FormBuilder) {
     
@@ -22,9 +23,9 @@ export class FormularioActoresComponent implements OnInit {
         '', {
           validators : [Validators.required]
         }],
+      biografia : '',
       fechaNacimiento : '',
       foto : '',
-      descripcion : ''
     });
   }
 
@@ -43,6 +44,6 @@ export class FormularioActoresComponent implements OnInit {
   }
 
   public tratarDescripcion(texto : string){
-    this.formulario.get('descripcion')?.setValue(texto);
+    this.formulario.get('biografia')?.setValue(texto);
   }
 }

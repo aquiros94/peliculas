@@ -1,3 +1,5 @@
+<app-mostrar-errores *ngIf="errores" [errores]="errores"></app-mostrar-errores>
+
 <form [formGroup]="formulario" (submit)="onSubmit()">
 
     <mat-form-field appearance="outline" class="inputNombre">
@@ -21,6 +23,7 @@
     </ng-container>
     
     <app-input-markdown [tituloEditar]="'Biografía'" (markdownComunicador)="tratarDescripcion($event)"></app-input-markdown>
+
     <div>
         <button mat-flat-button color="primary" type="submit" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>
         <button mat-stroked-button routerLink="/actores">Cancelar</button>

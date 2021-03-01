@@ -1,0 +1,65 @@
+[33mcommit 7f34d6cff79b94a4d6307d50bcdb1250b5116a6c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Mon Feb 22 23:09:15 2021 +0100
+
+    Nuevo control de errores de API, nuevo servicio de géneros
+
+[33mcommit edf4157b8efb72eb50a1c6355a95b946dc7c7055[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Mon Feb 15 20:39:26 2021 +0100
+
+    nuevo selector de actores que incluye arrastre entre los elementos
+
+[33mcommit f0a6ef2c21d3af1068b273b7b483c56e2f85cf08[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Sun Feb 7 20:31:43 2021 +0100
+
+    Nuevo selector multiple y cambios en el formulario de peliculas
+
+[33mcommit 4869b1190fc867dcc8a967e05736d44ac16d8ad3[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Sat Feb 6 21:02:38 2021 +0100
+
+    Crear y editar peliculas
+
+[33mcommit 0b6302b01a57c93eda72781a306e882b3cb4e4aa[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Thu Feb 4 00:32:20 2021 +0100
+
+    Añadido mapa para poner las coordenadas tanto en crear como editar cine
+
+[33mcommit 5cde4c733121bc7309dcc19892d84770033ddc6c[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Tue Feb 2 20:51:28 2021 +0100
+
+    Solucionado bug evento del markdown
+
+[33mcommit 12698f12e45e18e303a32079d5590e655986d2db[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Tue Feb 2 20:40:08 2021 +0100
+
+    Nuevo formulario de actores y cines tanto editar y crear. Añadido markdown en Actor
+
+[33mcommit 5c68884bdac98a5bf6d2bfbea9ac21758bf1f5a6[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Mon Feb 1 21:03:54 2021 +0100
+
+    Formulario crear y editar actor
+
+[33mcommit 5ac0fc1e6de9bf17e5c2f3c1a323d324fa31d105[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Mon Feb 1 20:59:14 2021 +0100
+
+    Quitar carpeta node_modules
+
+[33mcommit 14ef18eb73bc56d55fc60ea811c3bdacf0277451[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Sun Jan 31 21:10:06 2021 +0100
+
+    Filtro en la búsqueda de películas
+
+[33mcommit 48612ee6583ce861f480cbcc01a8f1f116e7de9f[m
+Author: aquiros94 <alberto94mairena@gmail.com>
+Date:   Sun Jan 31 11:09:47 2021 +0100
+
+    primera subida del proyecto web películas

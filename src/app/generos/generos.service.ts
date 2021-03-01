@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,11 +16,28 @@ export class GenerosService {
     this.apiUrl = environment.apiURL + "generos";
   }
 
-  public ObtenerTodos() : Observable<generoDTO[]>{
-    return this.http.get<generoDTO[]>(this.apiUrl);
+  public ObtenerTodos(pagina : number, cantidadRegistrosMostrar : number) : Observable<any>{
+    var parametro;
+    
+    parametro = new HttpParams();
+    parametro = parametro.append('pagina', pagina.toString());
+    parametro = parametro.append('registrosPorPagina', cantidadRegistrosMostrar.toString());
+    return this.http.get<generoDTO[]>(this.apiUrl, {observe : 'response', params : parametro});
   }
 
-  public CrearGenero(nuevoGenero : generoCreacionDTO){
+  public Crear(nuevoGenero : generoCreacionDTO){
     return this.http.post(this.apiUrl, nuevoGenero);
+  }
+
+  public Obtener(id : number) : Observable<any>{
+    return this.http.get<generoDTO>(this.apiUrl + "/" + id);
+  }
+
+  public Editar(id : number, genero : generoCreacionDTO) : Observable<any>{
+    return this.http.put(this.apiUrl + "/" + id, genero);
+  }
+
+  public Eliminar(id : number){
+    return this.http.delete(this.apiUrl + "/" + id);
   }
 }
