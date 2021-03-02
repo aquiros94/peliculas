@@ -19,6 +19,7 @@ export class CrearActorComponent implements OnInit {
   }
 
   public guardarCambios(actor : actorCreacionDTO){
+    debugger;
     this.actoresService.Crear(actor).subscribe(
       ()=>{
         this.route.navigate(["/actores"]);

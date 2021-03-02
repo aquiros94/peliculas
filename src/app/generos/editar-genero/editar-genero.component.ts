@@ -24,6 +24,7 @@ export class EditarGeneroComponent implements OnInit {
       params =>{
         this.servicioGenero.Obtener(params.id).subscribe(
           genero => {
+            debugger;
             this.modeloBBDD = genero;
           },
           ()=> {

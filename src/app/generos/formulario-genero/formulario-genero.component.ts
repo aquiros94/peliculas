@@ -26,6 +26,7 @@ export class FormularioGeneroComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger;
     if (this.parametroGenero !== undefined){
       this.form.patchValue(this.parametroGenero);
     }

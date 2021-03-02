@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { parsearErroresAPI } from 'src/app/utilidades/utilidades';
 import { actorCreacionDTO, actorDTO } from '../actor';
+import { ActoresService } from '../actores.service';
 
 @Component({
   selector: 'app-editar-actor',
@@ -8,16 +11,37 @@ import { actorCreacionDTO, actorDTO } from '../actor';
 })
 export class EditarActorComponent implements OnInit {
 
-  public actorParametro : actorDTO;
-
-  constructor() {
-    this.actorParametro = {nombre : "Daniel Radcliffe",fechaNacimiento : new Date("1989-07-23"), biografia : "Harry Potter", urlFoto : 'https://cdn.shopify.com/s/files/1/1878/3879/products/N3877_1000x1000.progressive.jpg?v=1551964399'}
+  public modeloBBDD : actorDTO;
+  public errores : string[];
+  
+  constructor(private activatedRoute : ActivatedRoute, private router : Router, private servicioGenero : ActoresService) {
+    this.errores = [];
   }
 
   ngOnInit(): void {
+    debugger;
+    this.activatedRoute.params.subscribe(
+      params =>{
+        this.servicioGenero.Obtener(params.id).subscribe(
+          actor => {
+            this.modeloBBDD = actor;
+          },
+          ()=> {
+            this.router.navigate(['/actores']);
+          });
+    });
   }
 
-  public guardarCambios(actor : actorCreacionDTO){
-    console.log(actor);
+  public guardarCambios(genero : actorCreacionDTO) : void{
+    this.servicioGenero.Editar(this.modeloBBDD.id, genero).subscribe(
+      ()=>{
+        this.router.navigate(["/actores"]);
+      },
+      (errores)=>{
+        this.errores = parsearErroresAPI(errores);
+      }
+    )
+    
   }
+
 }
