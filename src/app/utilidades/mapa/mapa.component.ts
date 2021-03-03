@@ -36,8 +36,9 @@ export class MapaComponent implements OnInit {
   }
 
   public clickMapa(eventoClick : LeafletMouseEvent){
+    debugger;
     console.log({latitud : eventoClick.latlng.lat, longitud : eventoClick.latlng.lng});
     this.marca = marker([eventoClick.latlng.lat, eventoClick.latlng.lng]);
-    this.coordenadas.emit({latitud : eventoClick.latlng.lat, longitud : eventoClick.latlng.lng});
+    this.coordenadas.emit({latitud : eventoClick.latlng.lat, longitud : eventoClick.latlng.lng + 360});
   }
 }

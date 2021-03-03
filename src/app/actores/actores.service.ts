@@ -31,6 +31,7 @@ export class ActoresService {
     if (actor.fechaNacimiento){
       formData.append('fechaNacimiento', new Date(actor.fechaNacimiento.toString()).toUTCString());
     }
+    debugger;
     if (actor.foto){
       formData.append('foto', actor.foto);
     }
@@ -55,7 +56,7 @@ export class ActoresService {
     return this.http.get<actorDTO>(this.apiURL + "/" + id);
   }
 
-  public Editar(id : number, genero : actorCreacionDTO) : Observable<any>{
-    return this.http.put(this.apiURL + "/" + id, genero);
+  public Editar(id : number, actor : actorCreacionDTO) : Observable<any>{
+    return this.http.put(this.apiURL + "/" + id, this.ConstruirFormData(actor));
   }
 }

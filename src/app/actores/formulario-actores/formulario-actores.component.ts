@@ -7,23 +7,17 @@ import { actorCreacionDTO, actorDTO } from '../actor';
   templateUrl: './formulario-actores.component.html',
   styleUrls: ['./formulario-actores.component.css']
 })
-export class FormularioActoresComponent implements OnInit, AfterViewInit {
+export class FormularioActoresComponent implements OnInit {
 
   public formulario : FormGroup;
+  private haCambiadoFoto : boolean;
   @Output() public guardar;
   @Input() public actorEditar : actorDTO;
   @Input() public errores : string[] | undefined;
 
   constructor(private formBuilder : FormBuilder) {
-    
+    this.haCambiadoFoto = false;
     this.guardar = new EventEmitter<actorCreacionDTO>();
-    
-  }
-  ngAfterViewInit(): void {
-    debugger;
-    if (this.actorEditar !== undefined){
-      this.formulario.patchValue(this.actorEditar);
-    } 
   }
 
   ngOnInit(): void {
@@ -44,15 +38,16 @@ export class FormularioActoresComponent implements OnInit, AfterViewInit {
     } 
   }
 
-  public delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
-
   public onSubmit(){
+    debugger;
+    if (!this.haCambiadoFoto){
+      this.formulario.value.foto = null;
+    }
     this.guardar.emit(this.formulario.value);
   }
 
   public archivoSeleccionado(fichero : File){
+    this.haCambiadoFoto = true;
     this.formulario.get('foto')?.setValue(fichero);
   }
 

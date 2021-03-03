@@ -14,7 +14,8 @@ export class FormularioCineComponent implements OnInit {
   public coordenada! : Coordenada;
   @Output() public comunicadorGuardarCambios;
   @Input() public cineEditar! : cineDTO;
-
+  @Input() public errores : string[];
+  
   constructor(private formBuilder : FormBuilder) { 
     this.formulario = this.formBuilder.group({
       nombre : ['', {validators : [Validators.required]}],
