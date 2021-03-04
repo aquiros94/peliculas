@@ -1,3 +1,4 @@
 <h2>Editar Cine</h2>
 
-<app-formulario-cine (comunicadorGuardarCambios)="guardarCambios($event)" [cineEditar]="cine"></app-formulario-cine>
+<app-formulario-cine *ngIf="modeloBBDD" (comunicadorGuardarCambios)="guardarCambios($event)" [cineEditar]="modeloBBDD" [errores]="errores"></app-formulario-cine>
+<mat-spinner *ngIf="!modeloBBDD"></mat-spinner>

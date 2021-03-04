@@ -16,7 +16,6 @@ export class ActoresService {
   }
 
   public Crear(nuevoActor : actorCreacionDTO) : Observable<any>{
-    debugger;
     return this.http.post(this.apiURL, this.ConstruirFormData(nuevoActor));
   }
 
@@ -31,7 +30,7 @@ export class ActoresService {
     if (actor.fechaNacimiento){
       formData.append('fechaNacimiento', new Date(actor.fechaNacimiento.toString()).toUTCString());
     }
-    debugger;
+
     if (actor.foto){
       formData.append('foto', actor.foto);
     }

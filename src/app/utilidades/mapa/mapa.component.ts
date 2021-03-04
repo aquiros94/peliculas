@@ -22,7 +22,7 @@ export class MapaComponent implements OnInit {
         tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
       ],
       zoom: 18,
-      center: latLng(37.373362294209095, -365.75699687004095)
+      center: latLng(37.360163949906394, -5.86959600448614)
     };
     this.coordenadas = new EventEmitter<Coordenada>();
   }
@@ -39,6 +39,6 @@ export class MapaComponent implements OnInit {
     debugger;
     console.log({latitud : eventoClick.latlng.lat, longitud : eventoClick.latlng.lng});
     this.marca = marker([eventoClick.latlng.lat, eventoClick.latlng.lng]);
-    this.coordenadas.emit({latitud : eventoClick.latlng.lat, longitud : eventoClick.latlng.lng + 360});
+    this.coordenadas.emit({latitud : eventoClick.latlng.lat, longitud : eventoClick.latlng.lng});
   }
 }
