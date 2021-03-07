@@ -1,3 +1,4 @@
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
 <form [formGroup]="formulario" (submit)="guardarCambios()">
     
     <mat-form-field appearance="outline" class="inputNombre">
@@ -42,10 +43,10 @@
     <app-selector-multiple [listaSinSeleccionar]="listaGenerosSinSeleccionar" [listaSeleccionados]="listaGenerosSeleccionados"></app-selector-multiple>
 
     <h2>Seleccione los cines</h2>
-    <app-selector-multiple [listaSinSeleccionar]="listaCinesSinSeleccionar" [listaSeleccionados]="listaCinesSeleccionados"></app-selector-multiple>
+    <app-selector-multiple [listaSinSeleccionar]="listaCinesSinSeleccionar" [listaSeleccionados]="listaCinesSeleccionados" ></app-selector-multiple>
 
     <h2>Selecciones los actores</h2>
-    <app-autocomplete-actores></app-autocomplete-actores>
+    <app-autocomplete-actores [listaActores]="actoresSeleccionados" [listaActoresSeleccionados]="actoresSeleccionados"></app-autocomplete-actores>
     
     <div>
         <button mat-flat-button color="primary" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { actorPeliculaDTO } from 'src/app/actores/actor';
 import { MultipleSelectorModel } from 'src/app/utilidades/selector-multiple/multiple-selector-model';
 import { PeliculaCreacionDTO, PeliculaDTO } from '../pelicula';
 
@@ -14,17 +15,19 @@ export class FormularioPeliculaComponent implements OnInit {
   @Input() public peliculaEditar! : PeliculaDTO;
 
   public formulario : FormGroup;
-  public listaGenerosSinSeleccionar : MultipleSelectorModel[];
+  @Input() public listaGenerosSinSeleccionar : MultipleSelectorModel[];
   public listaGenerosSeleccionados : MultipleSelectorModel[];
-  public listaCinesSinSeleccionar : MultipleSelectorModel[];
+  @Input() public listaCinesSinSeleccionar : MultipleSelectorModel[];
   public listaCinesSeleccionados : MultipleSelectorModel[];
+  @Input() public actoresSeleccionados : actorPeliculaDTO[];
+  @Input() public errores : string[];
 
   constructor(private formBuilder : FormBuilder) {
-    this.listaGenerosSinSeleccionar = [{id : 1, valor : "Acción"}, {id : 2, valor : "Comedia"}, {id : 3, valor : "Romántico"}, {id : 4, valor : "Fantástico"}];
-    this.listaCinesSinSeleccionar = [{id : 1, valor : "Nervión"}, {id : 2, valor : "Lagoh"}, {id : 3, valor : "Los Arcos"}, {id : 4, valor : "Eroski"}];
+    this.listaGenerosSinSeleccionar = []//[{id : 1, valor : "Acción"}, {id : 2, valor : "Comedia"}, {id : 3, valor : "Romántico"}, {id : 4, valor : "Fantástico"}];
+    this.listaCinesSinSeleccionar = []//[{id : 1, valor : "Nervión"}, {id : 2, valor : "Lagoh"}, {id : 3, valor : "Los Arcos"}, {id : 4, valor : "Eroski"}];
     this.listaGenerosSeleccionados = [];
     this.listaCinesSeleccionados = [];
-    
+    this.actoresSeleccionados = [];
     this.comunicadorGuardar = new EventEmitter<PeliculaCreacionDTO>();
 
     this.formulario = this.formBuilder.group({
@@ -34,7 +37,9 @@ export class FormularioPeliculaComponent implements OnInit {
       trailer : '',
       fechaLanzamiento : '',
       poster : '',
-      generos : []
+      generosId : [],
+      cinesId : [],
+      actores : []
     });
   }
 
@@ -45,7 +50,10 @@ export class FormularioPeliculaComponent implements OnInit {
   }
 
   public guardarCambios() : void {
-    this.formulario.get('generos')?.setValue(this.listaGenerosSeleccionados.map(x => x.id));
+    debugger;
+    this.formulario.get('generosId')?.setValue(this.listaGenerosSeleccionados.map(val => val.id));
+    this.formulario.get('cinesId')?.setValue(this.listaCinesSeleccionados.map(val => val.id));
+    this.formulario.get('actores')?.setValue(this.actoresSeleccionados.map(val => {return {id: val.id, personaje : val.personaje}}));
     this.comunicadorGuardar.emit(this.formulario.value);
   }
 

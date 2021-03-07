@@ -22,7 +22,13 @@
         <app-input-img class="botonera" (archivoSeleccionado)="archivoSeleccionado($event)"></app-input-img>
     </ng-container>
     
-    <app-input-markdown [tituloEditar]="'Biografía'" (markdownComunicador)="tratarDescripcion($event)" [contenidoMardown]="actorEditar.biografia"></app-input-markdown>
+    <ng-container *ngIf="actorEditar">
+        <app-input-markdown [tituloEditar]="'Biografía'" (markdownComunicador)="tratarDescripcion($event)" [contenidoMardown]="actorEditar.biografia"></app-input-markdown>
+    </ng-container>
+    <ng-container *ngIf="!actorEditar">
+        <app-input-markdown [tituloEditar]="'Biografía'" (markdownComunicador)="tratarDescripcion($event)"></app-input-markdown>
+    </ng-container>
+    <!-- <app-input-markdown [tituloEditar]="'Biografía'" (markdownComunicador)="tratarDescripcion($event)" [contenidoMardown]="actorEditar.biografia"></app-input-markdown> -->
 
     <div>
         <button mat-flat-button color="primary" type="submit" [disabled]="formulario.invalid" class="botonGuardar">Guardar Cambios</button>

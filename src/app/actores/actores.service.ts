@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -57,5 +57,11 @@ export class ActoresService {
 
   public Editar(id : number, actor : actorCreacionDTO) : Observable<any>{
     return this.http.put(this.apiURL + "/" + id, this.ConstruirFormData(actor));
+  }
+
+  public ObtenerPorNombres(nombre : string) : Observable<any>{
+    debugger;
+    var headers = new HttpHeaders('Content-Type: application/json')
+    return this.http.post(this.apiURL + "/BuscarPorNombre", JSON.stringify(nombre), {headers});
   }
 }
